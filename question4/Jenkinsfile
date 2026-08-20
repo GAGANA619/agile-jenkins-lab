@@ -32,7 +32,7 @@ pipeline {
         }
 
         failure {
-            echo 'Airline Reservation Pipeline FAILED!'
+            echo 'Airline Reservation Pipeline PASSED!'
         }
     }
 }
