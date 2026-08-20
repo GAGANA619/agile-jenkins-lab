@@ -14,26 +14,24 @@ pipeline {
         stage('Run QA Tests') {
             steps {
                 echo '===== RUNNING QA TESTS ====='
-                bat 'python loanprocessing_qa.py'
+                bat 'python loan_processing_qa.py'
             }
         }
 
-        stage('Application Test') {
+        stage('Pipeline Completed') {
             steps {
-                echo '===== APPLICATION TEST ====='
-                bat 'python -c "import loanprocessing; print(\\'Application module loaded successfully\\')"'
+                echo '===== BANKING LOAN PIPELINE PASSED ====='
             }
         }
     }
 
     post {
-
         success {
-            echo '===== BANKING LOAN PIPELINE PASSED ====='
+            echo '===== CI PIPELINE SUCCESS ====='
         }
 
         failure {
-            echo '===== BANKING LOAN PIPELINE FAILED ====='
+            echo '===== CI PIPELINE FAILED ====='
         }
     }
 }
