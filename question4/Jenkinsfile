@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out Airline Reservation project...'
+            }
+        }
+
+        stage('Run QA Tests') {
+            steps {
+                bat 'python -m unittest AirlineReservationQA.py'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'python AirlineReservation.py'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Airline Reservation Pipeline PASSED!'
+        }
+
+        failure {
+            echo 'Airline Reservation Pipeline FAILED!'
+        }
+    }
+}
