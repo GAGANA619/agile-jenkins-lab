@@ -14,7 +14,8 @@ pipeline {
         stage('Run QA Tests') {
             steps {
                 echo '===== RUNNING QA TESTS ====='
-                bat 'python loan_processing_qa.py'
+
+                bat '"C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe" loan_processing_qa.py'
             }
         }
 
@@ -26,6 +27,7 @@ pipeline {
     }
 
     post {
+
         success {
             echo '===== CI PIPELINE SUCCESS ====='
         }
