@@ -6,22 +6,30 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo '===== BANKING LOAN SYSTEM ====='
+                echo '===== E-COMMERCE ORDER PROCESSING ====='
                 echo 'Code checkout completed'
             }
         }
 
         stage('Run QA Tests') {
             steps {
-                echo '===== RUNNING QA TESTS ====='
+                echo '===== RUNNING E-COMMERCE QA TESTS ====='
 
-                bat '"C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe" loan_processing_qa.py'
+                bat '"C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe" order_management_qa.py'
+            }
+        }
+
+        stage('Application Test') {
+            steps {
+                echo '===== E-COMMERCE APPLICATION TEST ====='
+
+                bat '"C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe" -c "import order_management; print(\'Application module loaded successfully\')"'
             }
         }
 
         stage('Pipeline Completed') {
             steps {
-                echo '===== BANKING LOAN PIPELINE PASSED ====='
+                echo '===== E-COMMERCE PIPELINE PASSED ====='
             }
         }
     }
