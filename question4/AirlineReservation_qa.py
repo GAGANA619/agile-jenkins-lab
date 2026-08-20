@@ -7,7 +7,7 @@ from AirlineReservation import (
 )
 
 
-class AirlineReservationQA(unittest.TestCase):
+class AirlineReservation_qa(unittest.TestCase):
 
     def setUp(self):
         self.system = AirlineReservation()
