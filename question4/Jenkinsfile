@@ -3,9 +3,10 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Check Python') {
             steps {
-                echo 'Checking out Airline Reservation project...'
+                bat 'where python'
+                bat 'python --version'
             }
         }
 
