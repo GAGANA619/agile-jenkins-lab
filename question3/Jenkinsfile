@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'python HospitalManagementQA.py'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'python HospitalManagement.py'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Hospital Management Pipeline PASSED!'
+        }
+
+        failure {
+            echo 'Hospital Management Pipeline FAILED!'
+        }
+    }
+}
