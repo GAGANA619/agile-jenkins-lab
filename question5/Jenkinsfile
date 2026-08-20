@@ -15,13 +15,13 @@ pipeline {
 
         stage('Run QA Tests') {
             steps {
-                bat '"%PYTHON%" -m unittest WalletSecurityQA.py'
+                bat 'cd question5 && "%PYTHON%" -m unittest WalletSecurityQA.py'
             }
         }
 
         stage('Run Application') {
             steps {
-                bat '"%PYTHON%" DigitalWallet.py'
+                bat 'cd question5 && "%PYTHON%" DigitalWallet.py'
             }
         }
     }
