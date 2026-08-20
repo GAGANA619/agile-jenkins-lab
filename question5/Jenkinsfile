@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    environment {
+        PYTHON = 'C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe'
+    }
+
+    stages {
+
+        stage('Check Python') {
+            steps {
+                bat '"%PYTHON%" --version'
+            }
+        }
+
+        stage('Run QA Tests') {
+            steps {
+                bat '"%PYTHON%" -m unittest WalletSecurityQA.py'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat '"%PYTHON%" DigitalWallet.py'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Digital Wallet Pipeline PASSED!'
+        }
+
+        failure {
+            echo 'Digital Wallet Pipeline FAILED!'
+        }
+    }
+}
