@@ -11,7 +11,7 @@ pipeline {
 
         stage('Run QA Tests') {
             steps {
-                bat 'python -m unittest AirlineReservationQA.py'
+                bat 'python -m unittest AirlineReservation_qa.py'
             }
         }
 
