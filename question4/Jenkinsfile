@@ -1,24 +1,27 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = 'C:\\Users\\Gagana\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe'
+    }
+
     stages {
 
         stage('Check Python') {
             steps {
-                bat 'where python'
-                bat 'python --version'
+                bat '"%PYTHON%" --version'
             }
         }
 
         stage('Run QA Tests') {
             steps {
-                bat 'python -m unittest AirlineReservation_qa.py'
+                bat '"%PYTHON%" -m unittest AirlineReservation_qa.py'
             }
         }
 
         stage('Run Application') {
             steps {
-                bat 'python AirlineReservation.py'
+                bat '"%PYTHON%" AirlineReservation.py'
             }
         }
     }
